@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/local.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/local.js"></script>
+    <title>Kalkulator O&#x2082;</title>
+</head>
+<body>
+    <h1>Kalkulator O&#x2082;</h1>
+    <p>Wstępna wersja rozwojowa; pracujemy nad łatwością użycia. Przyjmiemy
+    uwagi: tlen@jakby.co</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <h3>Parametry</h3>
+                <div class="form">
+                    <div class="tanks">
+                    </div>
+                    <input id="new-tank"
+                           type="button" class="btn btn-secondary" value="Dodaj butlę" />
+
+                    <div class="sinks">
+                    </div>
+                    <input id="new-passive"
+                           type="button" class="btn btn-secondary" value="Pasywna terapia" />
+                    <input id="new-respi"
+                           type="button" class="btn btn-secondary" value="Respirator" />
+                    <br/>
+                    <input type="button" class="calculate btn btn-primary" value="Policz" />
+                </div>
+
+                <div class="error" role="alert"></div>
+                <div class="results hidden">
+                    <h3>Wyniki</h3>
+                    <table>
+                        <tr>
+                            <th>Czas do końca tlenu</th>
+                            <td class="time_left">podane dane</td>
+                        </tr>
+                        <tr>
+                            <th>Tlen całkowity</th>
+                            <td class="ox_left"></td>
+                        </tr>
+                        <tr>
+                            <th>Zużycie (suma)</th>
+                            <td class="ox_usage"></td>
+                        </tr>
+                        <tr>
+                            <th>Kiedy rezerwa</th>
+                            <td class="time_until_reserve"</td>
+                        </tr>
+                        <tr>
+                            <th>Kiedy koniec</th>
+                            <td class="time_empty"</td>
+                        </tr>
+                        <tr>
+                            <th>Zapas tlenu</th>
+                            <td class="oxy_left"</td>
+                        </tr>
+                        <tr>
+                            <th>Całkowite zużycie</th>
+                            <td class="oxy_flow"</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <h6>Odpowiedzialność</h6>
+                <p>
+                Autorzy nie ponoszą żadnej odpowiedzialności
+                za materiały zamieszczane na tej stronie; są one publikowane w
+                dobrej wierze, wyłącznie w celach informacyjnych. W szczególności informacje
+                zamieszczone na tej stronie nie stanowią porad zawodowych ani prawnych; chociaż staramy się zapewnić,
+                aby publikowane na tej stronie informacje były
+                aktualne i dokładne, nie może tego w żaden sposób zagwarantować.
+                Dołożymy starań, aby naprawić wszelkie zgłaszane błędy. Nie ponosimy
+                odpowiedzialności za sposób wykorzystania informacji dostępnych na tej stronie.
+                Zaleca się użytkownikom podjęcie wszelkich koniecznych środków
+                ostrożności, zanim wykorzystają takie dane. Użytkownik korzysta z danych na
+                własne ryzyko.
+                </p>
+            </div>
+        </div> <!-- row -->
+    </div> <!-- container -->
+
+
+
+    <!-- Templates -->
+    <div class="tmpls hidden">
+        <div class="respi card">
+            <div class="card-body">
+                <p>Respiratoroterapia</p>
+                <div class="form-group">
+                    <label>Objętość oddechu [l]
+                        <input class="form-control breath-volume" type="text"
+                               value="0.5"
+                               placeholder="Podaj objętość oddechu" inputmode="decimal" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Częstość oddechów [/min]
+                        <input class="form-control freq" type="text"
+                               value="20"
+                               placeholder="Podaj częstość oddechów" inputmode="numeric" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>FiO2 (0.21 - 1)
+                        <input class="form-control fio2" type="text"
+                               value="0.21"
+                               placeholder="Podaj zawartość tlenu" inputmode="numeric" />
+                    </label>
+                </div>
+                <input type="button" class="remove btn btn-danger" value="Usuń" />
+            </div>
+        </div>
+
+        <div class="passive card">
+            <div class="card-body">
+                <p>Tlenoterapia bierna</p>
+                <div class="form-group">
+                    <label>Przepływ, bierna [l/min]
+                        <input class="form-control flow" type="text"
+                               value="15"
+                               placeholder="Podaj przepływ" inputmode="decimal" />
+                    </label>
+                </div>
+                <input type="button" class="remove btn btn-danger" value="Usuń" />
+            </div>
+        </div>
+
+        <div class="tank card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Ciśnienie butli [bar]
+                        <input class="form-control pressure"
+                               type="text"
+                               value="200"
+                               placeholder="Podaj ciśnienie" inputmode="decimal" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Objętość butli [l]
+                        <input class="form-control volume"
+                               type="text"
+                               value="30"
+                               placeholder="Podaj objętość" inputmode="decimal" />
+                    </label>
+                </div>
+                <input type="button" class="remove btn btn-danger" value="Usuń" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+body {
+    margin: 1em;
+}
+.form div {
+    margin-bottom: 2em;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    /* DEBUG TEMP */
+    width: 370px;
+}
+
+.results table th {
+    margin-right: 10px;
+}
+
+.calculate {
+    margin: 10px 0px;
+}
+
+.disclaimer {
+    font-size: small;
+    margin-top: 50px;
+}
