@@ -1,17 +1,18 @@
 body {
     margin: 1em;
 }
-.form div {
-    margin-bottom: 2em;
+
+.form .adder {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+div.card {
+    margin-bottom: 10px;
 }
 
 .hidden {
     display: none;
-}
-
-body {
-    /* DEBUG TEMP */
-    width: 370px;
 }
 
 .results table th {

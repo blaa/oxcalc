@@ -71,9 +71,11 @@ function recalculate() {
     for (i in tanks) {
         state.o2_volume += tanks[i].volume * tanks[i].pressure;
     }
-    if (state.o2_volume == NaN) {
+    if (isNaN(state.o2_volume)) {
         error("Błędne dane w formularzu butli");
+        return;
     }
+    state.o2_volume = state.o2_volume.toFixed(2);
 
     /* flow */
     state.total_flow = 0;
@@ -87,11 +89,14 @@ function recalculate() {
         }
     }
 
-    if (state.total_flow == NaN) {
+    if (isNaN(state.total_flow)) {
         error("Błędne dane w formularzu terapii");
+        return;
     }
 
-    state.minutes_left = state.o2_volume / state.total_flow;
+    state.total_flow = state.total_flow.toFixed(2);
+
+    state.minutes_left = (state.o2_volume / state.total_flow).toFixed(1);
 
     $(".error p").remove();
     $("div.results").removeClass("hidden");
