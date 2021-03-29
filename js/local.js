@@ -12,12 +12,17 @@ function get_value(selector) {
     return parseFloat(v);
 }
 
+function parse_num(value) {
+    value = value.replace(",", ".");
+    return parseFloat(value);
+}
+
 function get_tanks() {
     var tanks = [];
     $(".tanks .card").each(function() {
         tanks.push({
-            pressure: parseFloat($('.pressure', this).val()),
-            volume: parseFloat($('.volume', this).val()),
+            pressure: parse_num($('.pressure', this).val()),
+            volume: parse_num($('.volume', this).val()),
         });
     });
     return tanks;
@@ -29,14 +34,14 @@ function get_sinks() {
         if ($(this).hasClass("respi")) {
             sinks.push({
                 type: 'respi',
-                breath_volume: parseFloat($('.breath-volume', this).val()),
-                freq: parseFloat($('.freq', this).val()),
-                fio2: parseFloat($('.fio2', this).val()),
+                breath_volume: parse_num($('.breath-volume', this).val()),
+                freq: parse_num($('.freq', this).val()),
+                fio2: parse_num($('.fio2', this).val()),
             });
         } else {
             sinks.push({
                 type: 'passive',
-                flow: parseFloat($('.flow', this).val()),
+                flow: parse_num($('.flow', this).val()),
             });
         }
     });
@@ -130,6 +135,7 @@ function new_respi() {
 }
 
 function update_clocks() {
+
 }
 
 function init() {
