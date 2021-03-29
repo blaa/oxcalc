@@ -16,7 +16,11 @@ div.card {
 }
 
 .results table th {
-    margin-right: 10px;
+    padding-right: 15px;
+}
+
+.results table {
+    margin-bottom: 10px;
 }
 
 .calculate {
@@ -26,4 +30,8 @@ div.card {
 .disclaimer {
     font-size: small;
     margin-top: 50px;
+}
+
+span.result {
+    font-weight: bold;
 }

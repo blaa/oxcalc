@@ -5,6 +5,7 @@ var state = {
     'o2_volume': 0,
     'total_flow': 0,
     'minutes_left': 0,
+    'time': null,
 };
 
 function get_value(selector) {
@@ -56,7 +57,6 @@ function error(msg) {
     $("div.results").addClass("hidden");
 }
 
-
 function recalculate() {
     var tanks = get_tanks();
     var sinks = get_sinks();
@@ -100,16 +100,27 @@ function recalculate() {
     }
 
     state.total_flow = state.total_flow.toFixed(2);
-
     state.minutes_left = (state.o2_volume / state.total_flow).toFixed(1);
+    state.time = new Date();
 
     $(".error p").remove();
     $("div.results").removeClass("hidden");
-    $('.time_left').text(state.minutes_left + " minut");
-
+    $('.ox_time').text(state.minutes_left + " minut");
     $('.ox_left').text(state.o2_volume + " l");
     $('.ox_usage').text(state.total_flow + " l/min");
 
+    var etl = new Date(state.time.getTime() + state.minutes_left * 60 * 1000);
+    $(".time_empty").text(etl.toLocaleString());
+
+    const hours_left = parseInt(state.minutes_left / 60);
+    const minutes = (state.minutes_left - hours_left * 60).toFixed(0);
+    var msg = "";
+    if (hours_left) {
+        msg = hours_left + "h ";
+    }
+    msg += minutes + "m";
+
+    $(".results span.result").text(msg);
 }
 
 function remover() {
@@ -134,8 +145,25 @@ function new_respi() {
     $("input.remove", output).click(remover);
 }
 
-function update_clocks() {
+function format_time(d) {
+    function lp(v) {
+        return ("00" + v).slice(-2);
+    }
+    return d.getDate() + "." + (d.getMonth()+1) + " " +
+        lp(d.getHours()) + ":" + lp(d.getMinutes());
+}
 
+function update_clocks() {
+    if (state.time == null)
+        return;
+    var now = new Date();
+    var millis_since = state.time.getTime();
+    var elapsed_minutes = (now.getTime() - millis_since) / 1000 / 60;
+
+    $(".time_input").text(state.time.toLocaleString());
+
+    var time_left = (state.minutes_left - elapsed_minutes).toFixed(2);
+    $(".time_left").text(time_left + " minut");
 }
 
 function init() {
@@ -146,11 +174,10 @@ function init() {
     $('input.calculate').click(recalculate);
     $('input').change(recalculate);
 
-
     /* Start with one tank */
     new_tank();
 
-    setTimeout(update_clocks, 1000);
+    setInterval(update_clocks, 1000);
 }
 
 $(document).ready(init);
