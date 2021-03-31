@@ -89,6 +89,10 @@ function recalculate() {
         if (sink.type == "respi") {
             const per_minute = sink.freq * (sink.breath_volume / 1000.0);
             state.total_flow += sink.fio2 * per_minute;
+            if (sink.fio2 < 0.21 || sink.fio2 > 1) {
+                error("Wartość FiO2 " + sink.fio2 + " poza zakresem 0.21 - 1");
+                return;
+            }
         } else {
             state.total_flow += sink.flow;
         }
