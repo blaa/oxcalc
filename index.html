@@ -25,7 +25,7 @@
         </div>
 
         <input id="new-passive"
-               type="button" class="adder btn btn-secondary" value="Pasywna terapia" />
+               type="button" class="adder btn btn-secondary" value="Tlenoterapia bierna" />
 
         <input id="new-respi"
                type="button" class="adder btn btn-secondary" value="Respirator" />
@@ -35,9 +35,13 @@
 
     <div class="error" role="alert"></div>
     <div class="results hidden">
-        <h3>Wyniki</h3>
+        <h3>Szacunki</h3>
         <h4>Tlenu wystarczy na <span class="result"></span></h4>
         <table>
+            <tr>
+                <th>Pozostały tlen</th>
+                <td class="time_left"</td>
+            </tr>
             <tr>
                 <th>Data obliczeń</th>
                 <td class="time_input"</td>
@@ -57,14 +61,6 @@
             <tr>
                 <th>Do godziny</th>
                 <td class="time_empty"</td>
-            </tr>
-        </table>
-
-        <h4>Dane bieżące</h4>
-        <table>
-            <tr>
-                <th>Pozostały tlen</th>
-                <td class="time_left"</td>
             </tr>
         </table>
     </div>
@@ -92,9 +88,9 @@
             <div class="card-body">
                 <h5 class="card-title">Respiratoroterapia</h5>
                 <div class="form-group">
-                    <label>Objętość oddechu [l]
+                    <label>Objętość oddechu [ml]
                         <input class="form-control breath-volume" type="text"
-                               value="0.5"
+                               value="50"
                                placeholder="Podaj objętość oddechu" inputmode="decimal" />
                     </label>
                 </div>
@@ -133,7 +129,7 @@
         <div class="tank card">
             <div class="card-body">
                 <div class="form-group">
-                    <label>Ciśnienie butli [bar]
+                    <label>Ciśnienie w butli [bar, atm]
                         <input class="form-control pressure"
                                type="text"
                                value="200"

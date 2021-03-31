@@ -35,3 +35,7 @@ div.card {
 span.result {
     font-weight: bold;
 }
+
+.results td.time_left {
+    font-weight: bold;
+}

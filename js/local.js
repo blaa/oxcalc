@@ -87,7 +87,7 @@ function recalculate() {
     for (i in sinks) {
         var sink = sinks[i];
         if (sink.type == "respi") {
-            const per_minute = sink.freq * sink.breath_volume;
+            const per_minute = sink.freq * (sink.breath_volume / 1000.0);
             state.total_flow += sink.fio2 * per_minute;
         } else {
             state.total_flow += sink.flow;
@@ -107,7 +107,11 @@ function recalculate() {
     $("div.results").removeClass("hidden");
     $('.ox_time').text(state.minutes_left + " minut");
     $('.ox_left').text(state.o2_volume + " l");
-    $('.ox_usage').text(state.total_flow + " l/min");
+    var ox_usage = state.total_flow + " l/min";
+    if (sinks.length > 1) {
+        ox_usage = ox_usage + " (liczba terapii: " + sinks.length + ")";
+    }
+    $('.ox_usage').text(ox_usage);
 
     var etl = new Date(state.time.getTime() + state.minutes_left * 60 * 1000);
     $(".time_empty").text(etl.toLocaleString());
