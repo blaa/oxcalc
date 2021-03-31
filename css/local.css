@@ -30,6 +30,7 @@ div.card {
 .disclaimer {
     font-size: small;
     margin-top: 50px;
+    text-align: justify;
 }
 
 span.result {

@@ -1,3 +1,4 @@
+"use strict";
 
 var state = {
     'tanks': [],
@@ -73,7 +74,7 @@ function recalculate() {
 
     /* volume */
     state.o2_volume = 0;
-    for (i in tanks) {
+    for (var i in tanks) {
         state.o2_volume += tanks[i].volume * tanks[i].pressure;
     }
     if (isNaN(state.o2_volume)) {
@@ -84,7 +85,7 @@ function recalculate() {
 
     /* flow */
     state.total_flow = 0;
-    for (i in sinks) {
+    for (var i in sinks) {
         var sink = sinks[i];
         if (sink.type == "respi") {
             const per_minute = sink.freq * (sink.breath_volume / 1000.0);
@@ -104,12 +105,11 @@ function recalculate() {
     }
 
     state.total_flow = state.total_flow.toFixed(2);
-    state.minutes_left = (state.o2_volume / state.total_flow).toFixed(1);
+    state.minutes_left = (state.o2_volume / state.total_flow);
     state.time = new Date();
 
     $(".error p").remove();
     $("div.results").removeClass("hidden");
-    $('.ox_time').text(state.minutes_left + " minut");
     $('.ox_left').text(state.o2_volume + " l");
     var ox_usage = state.total_flow + " l/min";
     if (sinks.length > 1) {
@@ -119,6 +119,7 @@ function recalculate() {
 
     var etl = new Date(state.time.getTime() + state.minutes_left * 60 * 1000);
     $(".time_empty").text(etl.toLocaleString());
+    $(".time_input").text(state.time.toLocaleString());
 
     const hours_left = parseInt(state.minutes_left / 60);
     const minutes = (state.minutes_left - hours_left * 60).toFixed(0);
@@ -168,10 +169,10 @@ function update_clocks() {
     var millis_since = state.time.getTime();
     var elapsed_minutes = (now.getTime() - millis_since) / 1000 / 60;
 
-    $(".time_input").text(state.time.toLocaleString());
-
-    var time_left = (state.minutes_left - elapsed_minutes).toFixed(2);
-    $(".time_left").text(time_left + " minut");
+    var time_left_s = (state.minutes_left*60 - elapsed_minutes*60);
+    var time_left_m = parseInt(time_left_s / 60);
+    time_left_s = parseInt(time_left_s - time_left_m * 60);
+    $(".time_left").text(time_left_m + "m " + time_left_s + "s");
 }
 
 function init() {
@@ -185,7 +186,7 @@ function init() {
     /* Start with one tank */
     new_tank();
 
-    setInterval(update_clocks, 1000);
+    setInterval(update_clocks, 500);
 }
 
 $(document).ready(init);
