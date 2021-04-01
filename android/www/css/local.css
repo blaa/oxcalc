@@ -1,0 +1,38 @@
+.form .adder {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+div.card {
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.results table th {
+    padding-right: 15px;
+}
+
+.results table {
+    margin-bottom: 10px;
+}
+
+.calculate {
+    margin: 10px 0px;
+}
+
+.disclaimer {
+    font-size: small;
+    margin-top: 50px;
+    text-align: justify;
+}
+
+span.result {
+    font-weight: bold;
+}
+
+.results td.time_left {
+    font-weight: bold;
+}

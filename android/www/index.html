@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <!--
+       Customize this policy to fit your own app's needs. For more guidance, see:
+       https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+       Some notes:
+       * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+       * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+       * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+       * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/local.css?2" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/local.js?2"></script>
+    <title>Kalkulator O&#x2082;</title>
+  </head>
+
+  <body>
+    <div class="app">
+      <h1>Kalkulator O&#x2082;</h1>
+      <div class="form">
+        <div class="tanks">
+        </div>
+        <input id="new-tank"
+             type="button" class="adder btn btn-secondary" value="Dodaj butlę" />
+
+        <div class="sinks">
+        </div>
+
+        <input id="new-passive"
+             type="button" class="adder btn btn-secondary" value="Dodaj tlenoterapię bierną" />
+
+        <input id="new-respi"
+             type="button" class="adder btn btn-secondary" value="Dodaj respirator" />
+        <br/>
+        <input type="button" class="calculate btn btn-primary" value="Policz" />
+      </div>
+
+      <div class="error" role="alert"></div>
+      <div class="results hidden">
+        <h4>Tlenu wystarczy na <span class="result"></span></h4>
+        <table>
+          <tr>
+            <th>Pozostały tlen</th>
+            <td class="time_left"></td>
+          </tr>
+          <tr>
+            <th>Do godziny</th>
+            <td class="time_empty"></td>
+          </tr>
+          <tr>
+            <th>Data obliczeń</th>
+            <td class="time_input"></td>
+          </tr>
+          <tr>
+            <th>W butlach</th>
+            <td class="ox_left"></td>
+          </tr>
+          <tr>
+            <th>Zużycie</th>
+            <td class="ox_usage"></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="disclaimer">
+          <p>
+            <a href="https://tlen.jakby.co">Wersja online</a><br/>
+            <a href="https://github.com/blaa/oxcalc">Strona projektowa</a><br/>
+            Kontakt: tlen@jakby.co
+          </p>
+        <h6>Odpowiedzialność</h6>
+        <p>
+          Autorzy nie ponoszą żadnej odpowiedzialności
+          za materiały zamieszczane na tej stronie; są one publikowane w
+          dobrej wierze, wyłącznie w celach informacyjnych. W szczególności informacje
+          zamieszczone na tej stronie nie stanowią porad zawodowych ani
+          prawnych; chociaż staramy się zapewnić, aby były
+          aktualne i dokładne, nie możemy tego w żaden sposób zagwarantować.
+          Dołożymy starań, aby naprawić wszelkie zgłaszane błędy. Nie ponosimy
+          odpowiedzialności za sposób wykorzystania informacji dostępnych na tej stronie.
+          Zaleca się użytkownikom podjęcie wszelkich koniecznych środków
+          ostrożności, zanim wykorzystają takie dane. Użytkownik korzysta z danych na
+          własne ryzyko.
+        </p>
+      </div>
+
+      <!-- Templates -->
+      <div class="tmpls hidden">
+        <div class="respi card">
+          <div class="card-body">
+            <h5 class="card-title">Respiratoroterapia</h5>
+            <div class="form-group">
+              <label>Objętość jednego wdechu [ml]
+                <input class="form-control breath-volume" type="text"
+                     placeholder="Podaj objętość wdechu" inputmode="decimal" />
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Częstość oddechów [/min]
+                <input class="form-control freq" type="text"
+                     placeholder="Podaj częstość oddechów" inputmode="numeric" />
+              </label>
+            </div>
+            <div class="form-group">
+              <label>FiO&#x2082; (0.21 - 1)
+                <input class="form-control fio2" type="text"
+                     placeholder="Podaj zawartość tlenu" inputmode="decimal" />
+              </label>
+            </div>
+            <input type="button" class="remove btn btn-danger" value="Usuń terapię" />
+          </div>
+        </div>
+
+        <div class="passive card">
+          <div class="card-body">
+            <h5 class="card-title">Tlenoterapia bierna</h5>
+            <div class="form-group">
+              <label>Przepływ, bierna [l/min]
+                <input class="form-control flow" type="text"
+                     placeholder="Podaj przepływ" inputmode="decimal" />
+              </label>
+            </div>
+            <input type="button" class="remove btn btn-danger" value="Usuń terapię" />
+          </div>
+        </div>
+
+        <div class="tank card">
+          <div class="card-body">
+            <div class="form-group">
+              <label>Ciśnienie w butli [bar, atm]
+                <input class="form-control pressure"
+                     type="text"
+                     placeholder="Podaj ciśnienie w butli" inputmode="decimal" />
+              </label>
+            </div>
+            <div class="form-group">
+              <label>Objętość butli [l]
+                <input class="form-control volume"
+                     type="text"
+                     placeholder="Podaj objętość" inputmode="decimal" />
+              </label>
+            </div>
+            <input type="button" class="remove btn btn-danger" value="Usuń butlę" />
+          </div>
+        </div>
+      </div>
+
+      <script src="cordova.js"></script>
+  </body>
+</html>
