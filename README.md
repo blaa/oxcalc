@@ -14,6 +14,8 @@ Requirements:
 - Cordova (npm install cordova)
 - Android SDK, gradle.
 - Set environment variables (see env.sh)
+- cordova platform add android
+- cordova requirements
 - cordova run --device (or build)
 - Build release & sign (see sign.sh)
 
