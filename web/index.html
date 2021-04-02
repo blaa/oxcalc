@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" value="Tomasz Fortuna, Piotr Dudzic" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/local.css?2" />
     <script src="js/jquery.min.js"></script>
@@ -13,24 +14,27 @@
 
 <body>
     <h1>Kalkulator O&#x2082;</h1>
-    <p>Wstępna wersja <a href="https://github.com/blaa/oxcalc">rozwojowa</a>; pracujemy nad łatwością użycia. Przyjmiemy uwagi: tlen@jakby.co
-    </p>
     <div class="form">
         <div class="tanks">
         </div>
-        <input id="new-tank"
-               type="button" class="adder btn btn-secondary" value="Dodaj butlę" />
+        <div class="btn-group" role="group">
+            <input id="new-tank"
+                   type="button" class="adder btn btn-success" value="Dodaj butlę" />
+        </div>
+        <br/>
+
+        <div class="btn-group" role="group" >
+            <input id="select-passive" type="button"
+                   class="adder btn btn-secondary btn-lg" value="Tlenoterapia bierna" />
+
+            <input id="select-respi" type="button"
+                   class="adder btn btn-secondary btn-lg" value="Respirator" />
+        </div>
 
         <div class="sinks">
         </div>
 
-        <input id="new-passive"
-               type="button" class="adder btn btn-secondary" value="Dodaj tlenoterapię bierną" />
-
-        <input id="new-respi"
-               type="button" class="adder btn btn-secondary" value="Dodaj respirator" />
-        <br/>
-        <input type="button" class="calculate btn btn-primary" value="Policz" />
+        <input type="button" class="calculate btn btn-primary btn-lg" value="Policz" />
     </div>
 
     <div class="error" role="alert"></div>
@@ -61,6 +65,10 @@
     </div>
 
     <div class="disclaimer">
+        <p>
+            <a href="https://github.com/blaa/oxcalc">Strona projektowa</a><br/>
+            Kontakt: tlen@jakby.co
+        </p>
         <h6>Odpowiedzialność</h6>
         <p>
             Autorzy nie ponoszą żadnej odpowiedzialności
@@ -100,7 +108,6 @@
                                placeholder="Podaj stężenie tlenu" inputmode="decimal" />
                     </label>
                 </div>
-                <input type="button" class="remove btn btn-danger" value="Usuń terapię" />
             </div>
         </div>
 
@@ -113,7 +120,6 @@
                                placeholder="Podaj przepływ" inputmode="decimal" />
                     </label>
                 </div>
-                <input type="button" class="remove btn btn-danger" value="Usuń terapię" />
             </div>
         </div>
 
@@ -133,7 +139,8 @@
                                placeholder="Podaj objętość" inputmode="decimal" />
                     </label>
                 </div>
-                <input type="button" class="remove btn btn-danger" value="Usuń butlę" />
+                <input type="button" class="remove btn btn-danger"
+                       value="Usuń butlę" />
             </div>
         </div>
     </div>

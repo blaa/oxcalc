@@ -140,18 +140,29 @@ function new_tank() {
     var tank = $(".tmpls div.tank").clone();
     $(".tanks").append(tank);
     $("input.remove", tank).click(remover);
+    $("div.results").addClass("hidden");
 }
 
-function new_passive() {
+function select_passive() {
     var output = $(".tmpls div.passive").clone();
+    $(".sinks div").remove();
     $(".sinks").append(output);
-    $("input.remove", output).click(remover);
+    $("#select-respi").removeClass("btn-primary");
+    $("#select-respi").addClass("btn-secondary");
+    $("#select-passive").addClass("btn-primary");
+    $("#select-passive").removeClass("btn-secondary");
+    $("div.results").addClass("hidden");
 }
 
-function new_respi() {
+function select_respi() {
     var output = $(".tmpls div.respi").clone();
+    $(".sinks div").remove();
     $(".sinks").append(output);
-    $("input.remove", output).click(remover);
+    $("#select-passive").removeClass("btn-primary");
+    $("#select-passive").addClass("btn-secondary");
+    $("#select-respi").addClass("btn-primary");
+    $("#select-respi").removeClass("btn-secondary");
+    $("div.results").addClass("hidden");
 }
 
 function format_time(d) {
@@ -177,14 +188,15 @@ function update_clocks() {
 
 function init() {
     $('#new-tank').click(new_tank);
-    $('#new-passive').click(new_passive);
-    $('#new-respi').click(new_respi);
+    $('#select-passive').click(select_passive);
+    $('#select-respi').click(select_respi);
 
     $('input.calculate').click(recalculate);
     $('input').change(recalculate);
 
-    /* Start with one tank */
+    /* Start with one, non removable tank */
     new_tank();
+    $(".tanks input.remove").remove();
 
     setInterval(update_clocks, 500);
 }

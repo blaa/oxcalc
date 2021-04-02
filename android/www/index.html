@@ -32,23 +32,27 @@
       <div class="form">
         <div class="tanks">
         </div>
-        <input id="new-tank"
-             type="button" class="adder btn btn-secondary" value="Dodaj butlę" />
+        <div class="btn-group" role="group">
+            <input id="new-tank"
+                   type="button" class="adder btn btn-success" value="Dodaj butlę" />
+        </div>
+        <br/>
+
+        <div class="btn-group" role="group" >
+            <input id="select-passive" type="button"
+                   class="adder btn btn-secondary btn-lg" value="Tlenoterapia bierna" />
+
+            <input id="select-respi" type="button"
+                   class="adder btn btn-secondary btn-lg" value="Respirator" />
+        </div>
 
         <div class="sinks">
         </div>
 
-        <input id="new-passive"
-             type="button" class="adder btn btn-secondary" value="Dodaj tlenoterapię bierną" />
+        <input type="button" class="calculate btn btn-primary btn-lg" value="Policz" />
 
-        <input id="new-respi"
-             type="button" class="adder btn btn-secondary" value="Dodaj respirator" />
-        <br/>
-        <input type="button" class="calculate btn btn-primary" value="Policz" />
-      </div>
-
-      <div class="error" role="alert"></div>
-      <div class="results hidden">
+    <div class="error" role="alert"></div>
+    <div class="results hidden">
         <h4>Tlenu wystarczy na <span class="result"></span></h4>
         <table>
           <tr>
@@ -94,68 +98,67 @@
           ostrożności, zanim wykorzystają takie dane. Użytkownik korzysta z danych na
           własne ryzyko.
         </p>
-      </div>
+    </div>
 
-      <!-- Templates -->
-      <div class="tmpls hidden">
+    <!-- Templates -->
+    <div class="tmpls hidden">
         <div class="respi card">
-          <div class="card-body">
-            <h5 class="card-title">Respiratoroterapia</h5>
-            <div class="form-group">
-              <label>Objętość jednego wdechu [ml]
-                <input class="form-control breath-volume" type="text"
-                     placeholder="Podaj objętość wdechu" inputmode="decimal" />
-              </label>
+            <div class="card-body">
+                <h5 class="card-title">Respiratoroterapia</h5>
+                <div class="form-group">
+                    <label>Objętość jednego wdechu [ml]
+                        <input class="form-control breath-volume" type="text"
+                               placeholder="Podaj objętość wdechu" inputmode="decimal" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Częstość oddechów [/min]
+                        <input class="form-control freq" type="text"
+                               placeholder="Podaj częstość oddechów" inputmode="numeric" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>FiO&#x2082; (0.21 - 1)
+                        <input class="form-control fio2" type="text"
+                               placeholder="Podaj stężenie tlenu" inputmode="decimal" />
+                    </label>
+                </div>
             </div>
-            <div class="form-group">
-              <label>Częstość oddechów [/min]
-                <input class="form-control freq" type="text"
-                     placeholder="Podaj częstość oddechów" inputmode="numeric" />
-              </label>
-            </div>
-            <div class="form-group">
-              <label>FiO&#x2082; (0.21 - 1)
-                <input class="form-control fio2" type="text"
-                     placeholder="Podaj zawartość tlenu" inputmode="decimal" />
-              </label>
-            </div>
-            <input type="button" class="remove btn btn-danger" value="Usuń terapię" />
-          </div>
         </div>
 
         <div class="passive card">
-          <div class="card-body">
-            <h5 class="card-title">Tlenoterapia bierna</h5>
-            <div class="form-group">
-              <label>Przepływ, bierna [l/min]
-                <input class="form-control flow" type="text"
-                     placeholder="Podaj przepływ" inputmode="decimal" />
-              </label>
+            <div class="card-body">
+                <h5 class="card-title">Tlenoterapia bierna</h5>
+                <div class="form-group">
+                    <label>Przepływ, bierna [l/min]
+                        <input class="form-control flow" type="text"
+                               placeholder="Podaj przepływ" inputmode="decimal" />
+                    </label>
+                </div>
             </div>
-            <input type="button" class="remove btn btn-danger" value="Usuń terapię" />
-          </div>
         </div>
 
         <div class="tank card">
-          <div class="card-body">
-            <div class="form-group">
-              <label>Ciśnienie w butli [bar, atm]
-                <input class="form-control pressure"
-                     type="text"
-                     placeholder="Podaj ciśnienie w butli" inputmode="decimal" />
-              </label>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Ciśnienie w butli [bar, atm]
+                        <input class="form-control pressure"
+                               type="text"
+                               placeholder="Podaj ciśnienie w butli" inputmode="decimal" />
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Objętość butli [l]
+                        <input class="form-control volume"
+                               type="text"
+                               placeholder="Podaj objętość" inputmode="decimal" />
+                    </label>
+                </div>
+                <input type="button" class="remove btn btn-danger"
+                       value="Usuń butlę" />
             </div>
-            <div class="form-group">
-              <label>Objętość butli [l]
-                <input class="form-control volume"
-                     type="text"
-                     placeholder="Podaj objętość" inputmode="decimal" />
-              </label>
-            </div>
-            <input type="button" class="remove btn btn-danger" value="Usuń butlę" />
-          </div>
         </div>
-      </div>
+    </div>
 
       <script src="cordova.js"></script>
   </body>
