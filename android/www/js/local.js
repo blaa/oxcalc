@@ -127,7 +127,7 @@ function recalculate() {
     if (hours_left) {
         msg = hours_left + "h ";
     }
-    msg += minutes + "m";
+    msg += minutes + "min";
 
     $(".results span.result").text(msg);
 }
@@ -172,7 +172,7 @@ function update_clocks() {
     var time_left_s = (state.minutes_left*60 - elapsed_minutes*60);
     var time_left_m = parseInt(time_left_s / 60);
     time_left_s = parseInt(time_left_s - time_left_m * 60);
-    $(".time_left").text(time_left_m + "m " + time_left_s + "s");
+    $(".time_left").text(time_left_m + "min " + time_left_s + "s");
 }
 
 function init() {
