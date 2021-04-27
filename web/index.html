@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" value="Tomasz Fortuna, Piotr Dudzic" />
+    <meta name="license" value="MIT" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/local.css?2" />
     <script src="js/jquery.min.js"></script>
@@ -64,25 +65,112 @@
         </table>
     </div>
 
-    <div class="disclaimer">
-        <p>
-            <a href="https://github.com/blaa/oxcalc">Strona projektowa</a><br/>
-            Kontakt: tlen@jakby.co
-        </p>
-        <h6>Odpowiedzialność</h6>
-        <p>
-            Autorzy nie ponoszą żadnej odpowiedzialności
-            za materiały zamieszczane na tej stronie; są one publikowane w
-            dobrej wierze, wyłącznie w celach informacyjnych. W szczególności informacje
-            zamieszczone na tej stronie nie stanowią porad zawodowych ani
-            prawnych; chociaż staramy się zapewnić, aby były
-            aktualne i dokładne, nie możemy tego w żaden sposób zagwarantować.
-            Dołożymy starań, aby naprawić wszelkie zgłaszane błędy. Nie ponosimy
-            odpowiedzialności za sposób wykorzystania informacji dostępnych na tej stronie.
-            Zaleca się użytkownikom podjęcie wszelkich koniecznych środków
-            ostrożności, zanim wykorzystają takie dane. Użytkownik korzysta z danych na
-            własne ryzyko.
-        </p>
+    <div class="accordion">
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-light btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Wzory i pomoc
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>
+                        Aplikacja liczy, niezależnie od wybranej terapii,
+                        przybliżoną dostępną objętość tlenu w butlach według wzoru <em>tlen[l] = Ciśnienie butli 1 * Objętość butli 1 +
+                        Ciśnienie butli 2 * Objętość butli 2 + ... </em>
+                    </p>
+                    <p>
+                        Przybliżony przepływ tlenu na minutę przy respiratorze
+                        liczony jest ze wzoru:
+                        <em>przepływ [l/min] = (objętość oddechu [ml] / 1000) * częstość oddechów [1/min] * FiO₂</em>.
+                    </p>
+                    <p>
+                        W tlenoterapii biernej przepływ <em>[l/min]</em> jest znany.
+                    </p>
+                    <p>
+                        Dzieląc dostępny tlen na przepływ uzyskujemy liczbę
+                        minut: <em>tlen [l] / przepływ [l/min] = czas [min]</em>.
+                        Z liczby minut i czasu wciśnięcia przycisku "policz"
+                        kalkulator określa przybliżony czas kiedy tlen się skończy.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-light btn-block text-left" type="button" data-toggle="collapse"
+                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                       Zasady korzystania
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>
+                        Mechanizmy i parametry użyte w Aplikacji pochodzą z wiarygodnych, publicznie
+                        dostępnych źródeł i według najlepszej wiedzy mogą być uznane za
+                        rzetelne.
+
+                        Dokładność danych wyświetlanych przez Aplikację zależy od dokładności użytego
+                        modelu obliczeń oraz dokładności danych wprowadzonych przez użytkownika.
+
+                        Autorzy dokładają wszelkich starań, aby dane prezentowane przez Aplikację były
+                        kompletne i zgodne ze stanem faktycznym, nie mogą tego w pełni zagwarantować,
+                        w związku z czym nie ponoszą żadnej odpowiedzialności za skutki
+                        wykorzystywania Aplikacji, w szczególności za szkody powstałe w
+                        wyniku korzystania z nich przy podejmowaniu decyzji.
+                    </p>
+                    <p>
+                        Autorzy zastrzegają, że
+                        korzystanie z Aplikacji możliwie jest wyłącznie na ryzyko Użytkownika.
+                    </p>
+                    <p>
+                        Autorzy nie udzielą gwarancji, że korzystanie z Aplikacji
+                        przebiegało będzie bez błędów, wad, czy przerw jak i co do tego, jak i co
+                        do merytorycznej zawartości Aplikacji, dokładności czy przydatności
+                        uzyskanych informacji.
+                    </p>
+                    <p>
+                        Autorzy nie ponoszą odpowiedzialności za jakiekolwiek szkody w tym
+                        ewentualne lub wynikowe poniesione przez Użytkowników z powodu przerwy
+                        w dostępie Użytkowników do Aplikacji, w szczególności spowodowane:
+                        działaniem siły wyższej, błędnym działaniem lub awariami, w tym
+                        awariami łączy dostawców sieci Internet, awariami sprzętu lub
+                        oprogramowania Użytkowników. Autorzy zastrzegają sobie prawo do
+                        jednostronnego decydowania o zawartości Aplikacji, dokonywanych w niej
+                        zmianach i modyfikacjach, bez uprzedniego informowania Użytkowników o
+                        ich wprowadzaniu lub zakresie.
+                    </p>
+                    <p>
+                        Aplikacja udostępniona jest na licencji MIT.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-light btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Linki
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    <p>
+                        Strona projektu <a href="https://github.com/blaa/oxcalc">github.com/blaa/oxcalc</a><br/>
+                        Kontakt do autorów: tlen@jakby.co
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Templates -->

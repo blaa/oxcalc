@@ -1,5 +1,7 @@
 "use strict";
 
+/* License: MIT */
+
 var state = {
     'tanks': [],
     'sinks': [],

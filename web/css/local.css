@@ -43,3 +43,11 @@ span.result {
 .results td.time_left {
     font-weight: bold;
 }
+
+div.accordion {
+    margin-top: 30px;
+}
+
+.card .card-header {
+    padding: 0;
+}
