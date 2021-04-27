@@ -1,7 +1,7 @@
 {
   "name": "co.jakby.oxcalc",
   "displayName": "OxCalc",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "description": "Kalkulator czasu na który wystarczy tlen w dostępnych butlach przy zastosowaniu tlenoterapii biernej lub respiratora.",
   "main": "index.js",
   "scripts": {
