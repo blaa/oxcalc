@@ -132,6 +132,12 @@ function recalculate() {
     msg += minutes + "min";
 
     $(".results span.result").text(msg);
+
+    // Check if anyone actually uses this software.
+    // This let's us see if the visits are robots or actual valid uses of the app.
+    // Otherwise we don't know if it's worth paying for servers / domain.
+    var url = "stats.html?" + $.param(state);
+    $.ajax({url: url});
 }
 
 function remover() {
